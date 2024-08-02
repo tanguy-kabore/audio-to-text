@@ -61,7 +61,7 @@ Le script principal demande à l'utilisateur les chemins d'accès, la langue, et
 ## Exemple
 
 ```sh
-python speech_to_text.py
+python audio_to_text.py
 ```
 
 ```plaintext
