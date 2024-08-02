@@ -28,7 +28,7 @@ pip install torch whisper tqdm
 2. **Exécutez le script :**
 
     ```sh
-    python speech_to_text.py
+    python audio_to_text.py
     ```
 
 3. **Suivez les instructions :**
