@@ -1,80 +1,58 @@
+# Projet Audio-to-Text
 
-# Transcription Audio en Texte
-
-Ce projet fournit un script pour transcrire des fichiers audio en texte en utilisant le modèle Whisper d'OpenAI. Il supporte divers formats audio (WAV, MP3, M4A, OGG, FLAC) et permet de spécifier la langue de l'audio pour une transcription plus précise. Il offre également une option pour détecter automatiquement la langue de l'audio.
+Ce projet utilise le modèle Whisper pour transcrire des fichiers audio en texte, avec une option pour détecter automatiquement la langue parlée dans l'audio. Avant la transcription, le fichier audio est traité pour supprimer les bruits de fond.
 
 ## Prérequis
 
-- Python 3.7 ou supérieur
-- `torch`
+- Python 3.7+
 - `whisper`
+- `torch`
 - `tqdm`
+- `pydub`
 
-Vous pouvez installer les packages nécessaires avec la commande suivante :
+Vous pouvez installer les dépendances nécessaires avec pip :
 
-```sh
-pip install torch whisper tqdm
+```bash
+pip install whisper torch tqdm pydub
 ```
 
 ## Utilisation
 
-1. **Clonez le dépôt :**
+1. Clonez ce dépôt :
 
-    ```sh
-    git clone https://github.com/tanguy-kabore/audio-to-text.git
-    cd audio-to-text
-    ```
+```bash
+git clone https://github.com/tanguy-kabore/audio-to-text.git
+cd audio-to-text
+```
 
-2. **Exécutez le script :**
+2. Exécutez le script `audio_to_text.py` :
 
-    ```sh
-    python audio_to_text.py
-    ```
-
-3. **Suivez les instructions :**
-
-    - Entrez le chemin vers un fichier audio (WAV, MP3, M4A, OGG, ou FLAC).
-    - Entrez le code de langue (par exemple, `en`, `fr`, `de`).
-    - Entrez le chemin vers le fichier de sortie pour le texte.
-    - Choisissez si vous souhaitez détecter la langue et transcrire (`oui` ou `non`).
-
-## Explication du Code
-
-Le script fournit les fonctions suivantes :
-
-### `transcribe_audio(file_path, language)`
-
-Transcrit le fichier audio à l'emplacement `file_path` en utilisant la langue spécifiée `language`. Il charge l'audio, le traite, crée un spectrogramme log-Mel et effectue la transcription.
-
-### `detect_language_and_transcribe(file_path, language)`
-
-Détecte la langue du fichier audio à l'emplacement `file_path`, puis le transcrit en utilisant la langue détectée. Il effectue des étapes similaires à celles de `transcribe_audio` avec des étapes supplémentaires pour détecter la langue.
-
-### `write_transcription_to_file(text, output_path)`
-
-Écrit le texte transcrit dans un fichier à l'emplacement `output_path`.
-
-### Script Principal
-
-Le script principal demande à l'utilisateur les chemins d'accès, la langue, et les options, puis appelle les fonctions appropriées pour transcrire l'audio et sauvegarder le résultat dans un fichier.
-
-## Exemple
-
-```sh
+```bash
 python audio_to_text.py
 ```
 
-```plaintext
-Please enter the path to an audio file (WAV, MP3, M4A, OGG, or FLAC): C:\Projects\Python_lab\audio-to-text\input.wav
-Please enter the language code (e.g., en, fr, de): fr
-Please enter the path to the output text file: C:\Projects\Python_lab\audio-to-text\output.txt
-Do you want to detect the language and transcribe? (yes/no): no
-```
+3. Suivez les instructions pour fournir le chemin vers le fichier audio, la langue de l'audio et le chemin pour le fichier de sortie.
 
-## Gestion des Avertissements
+## Exemple
 
-Le script ignore certains avertissements spécifiques liés à l'utilisation de `torch.load` et au support de FP16 sur CPU pour assurer une exécution fluide sans avertissements inutiles.
+Lors de l'exécution du script, vous serez invité à entrer le chemin vers un fichier audio (WAV, MP3, M4A, OGG ou FLAC), la langue de l'audio (par exemple, en, fr, de) et le chemin vers le fichier texte de sortie. Vous aurez également la possibilité de détecter automatiquement la langue parlée dans l'audio.
+
+## Fonctionnalités
+
+- Amélioration de la qualité de l'audio en supprimant les bruits de fond.
+- Transcription de l'audio dans la langue spécifiée.
+- Détection automatique de la langue parlée dans l'audio.
+- Sauvegarde de la transcription dans un fichier texte.
+
+## Avertissements
+
+- Ce projet utilise `pydub` et `ffmpeg` pour traiter l'audio. Assurez-vous que `ffmpeg` est installé et accessible depuis votre PATH.
+- Les avertissements spécifiques liés à `torch` sont filtrés pour une exécution plus fluide.
+
+## Contributions
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à soumettre une pull request.
 
 ## Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour les détails.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
